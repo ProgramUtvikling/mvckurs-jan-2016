@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using ImdbDAL;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ImdbWeb.Controllers
 {
-	[Route("Movie")]
     public class MovieController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "MovieController.Index()";
+			var db = new ImdbContext();
+			ViewData.Model = db.Movies;
+            return View();
         }
 
         public string Details(string id)
@@ -26,7 +28,7 @@ namespace ImdbWeb.Controllers
             return "MovieController.Genres()";
         }
 
-		[Route("Genre/{genrename}")]
+		[Route("Movie/Genre/{genrename}")]
         public string MoviesByGenre(string genrename)
         {
             return $"MovieController.MoviesByGenre({genrename})";

@@ -10,9 +10,9 @@ namespace ImdbWeb.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "HomeController.Index()";
+            return View();
         }
     }
 }

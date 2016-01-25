@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ImdbDAL.Movie>
+<h2>Liste over filmer</h2>
+<ul>
+	@foreach (var movie in Model)
+	{
+		<li>
+			<a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId">
+				@movie.Title
+			</a>
+		</li>
+	}
+</ul>
