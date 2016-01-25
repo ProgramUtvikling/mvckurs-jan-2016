@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net46": {
+      "wrappedProject": "../../src/ImdbDAL/ImdbDAL.csproj",
+      "bin": {
+        "assembly": "../../src/ImdbDAL/obj/{configuration}/ImdbDAL.dll",
+        "pdb": "../../src/ImdbDAL/obj/{configuration}/ImdbDAL.pdb"
+      },
+      "dependencies": {
+        "EntityFramework": "6.1.3",
+        "EntityFramework.SqlServer": "1.0.0-*"
+      }
+    }
+  }
+}
