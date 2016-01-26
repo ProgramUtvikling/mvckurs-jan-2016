@@ -1,4 +1,6 @@
-﻿@model ImdbDAL.Movie
+﻿@using ImdbWeb.HtmlHelpers
+
+@model Movie
 <h2>@Model.Title (@Model.ProductionYear)</h2>
 <p>@Model.OriginalTitle</p>
 
@@ -7,7 +9,12 @@
 	<dd>@Model.ProductionYear</dd>
 	<dt>Running Length</dt>
 	<dd>@Model.RunningLength</dd>
+	@*<dt>Producers</dt>
+	<dd>@Html.PrettyJoin(Model.Producers)</dd>
+	<dt>Directors</dt>
+	<dd>@Html.PrettyJoin(Model.Directors)</dd>*@
 </dl>
+
 
 <h3>Actors</h3>
 <ul>

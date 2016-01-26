@@ -1,0 +1,14 @@
+﻿@using ImdbWeb.ViewComponents
+@model MovieListViewComponentModel
+
+<h3>@Model.Title</h3>
+<ul>
+	@foreach (var movie in Model.Movies)
+	{
+		<li>
+			<a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId">
+				@movie.Title
+			</a>
+		</li>
+	}
+</ul>
