@@ -4,24 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using ImdbDAL;
+using Microsoft.Extensions.Caching.Memory;
+using ImdbWeb.Filters;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ImdbWeb.Controllers
 {
-    public class MovieController : Controller
+	[TimingFilter]
+	public class MovieController : Controller
     {
-        public IActionResult Index()
+		[FromServices]
+		public ImdbContext Db { get; set; }
+
+		public IActionResult Index()
         {
-			var db = new ImdbContext();
-			ViewData.Model = db.Movies;
+			ViewData.Model = Db.Movies;
             return View();
         }
 
         public IActionResult Details(string id)
         {
-			var db = new ImdbContext();
-			var movie = db.Movies.Find(id);
+			var movie = Db.Movies.Find(id);
 			if(movie == null)
 			{
 				return HttpNotFound();
@@ -34,16 +38,14 @@ namespace ImdbWeb.Controllers
 
 		public IActionResult Genres()
         {
-			var db = new ImdbContext();
-			ViewData.Model = db.Genres;
+			ViewData.Model = Db.Genres;
 			return View();
 		}
 
 		[Route("Movie/Genre/{genrename}")]
         public IActionResult MoviesByGenre(string genrename)
         {
-			var db = new ImdbContext();
-			ViewData.Model = db.Movies.Where(m => m.Genre.Name == genrename);
+			ViewData.Model = Db.Movies.Where(m => m.Genre.Name == genrename);
 			ViewBag.Genrename = genrename;
 			return View("Index");
 		}

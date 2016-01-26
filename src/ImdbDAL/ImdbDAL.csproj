@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comment.cs" />
+    <Compile Include="ImdbOptions.cs" />
     <Compile Include="Migrations\201512171043274_Initial.cs" />
     <Compile Include="Migrations\201512171043274_Initial.Designer.cs">
       <DependentUpon>201512171043274_Initial.cs</DependentUpon>
