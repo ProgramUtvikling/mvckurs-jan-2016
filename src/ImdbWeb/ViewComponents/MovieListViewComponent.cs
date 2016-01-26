@@ -11,7 +11,7 @@ namespace ImdbWeb.ViewComponents
     {
 		public IViewComponentResult Invoke(IEnumerable<Movie> movies, string title)
 		{
-			if(string.IsNullOrWhiteSpace(title) || movies.Any())
+			if(string.IsNullOrWhiteSpace(title) || !movies.Any())
 			{
 				return View("Empty");
 			}
