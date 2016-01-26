@@ -24,6 +24,7 @@ namespace ImdbWeb
 			app.UseIISPlatformHandler();
 
 			app.UseStaticFiles();
+			app.UseDeveloperExceptionPage();
 
 			app.UseMvcWithDefaultRoute();
 		}
