@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ImdbDAL.Person>
+<h2>People</h2>
+<ul>
+	@foreach (var person in Model)
+	{
+		<li>
+			<a asp-controller="Person" asp-action="Details" asp-route-id="@person.PersonId">
+				@person.Name
+			</a>
+		</li>
+	}
+</ul>

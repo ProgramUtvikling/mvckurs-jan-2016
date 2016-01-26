@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ImdbDAL.Genre>
+<h2>Genres</h2>
+<ul>
+	@foreach (var genre in Model)
+	{
+		<li>
+			<a asp-controller="Movie" asp-action="MoviesByGenre" asp-route-genrename="@genre.Name">
+				@genre.Name
+			</a>
+		</li>
+	}
+</ul>

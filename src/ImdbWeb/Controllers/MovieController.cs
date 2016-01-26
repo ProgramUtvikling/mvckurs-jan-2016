@@ -18,20 +18,26 @@ namespace ImdbWeb.Controllers
             return View();
         }
 
-        public string Details(string id)
+        public IActionResult Details(string id)
         {
-            return $"MovieController.Details({id})";
-        }
+			var db = new ImdbContext();
+			ViewData.Model = db.Movies.Find(id);
+			return View();
+		}
 
-        public string Genres()
+		public IActionResult Genres()
         {
-            return "MovieController.Genres()";
-        }
+			var db = new ImdbContext();
+			ViewData.Model = db.Genres;
+			return View();
+		}
 
 		[Route("Movie/Genre/{genrename}")]
-        public string MoviesByGenre(string genrename)
+        public IActionResult MoviesByGenre(string genrename)
         {
-            return $"MovieController.MoviesByGenre({genrename})";
-        }
-    }
+			var db = new ImdbContext();
+			ViewData.Model = db.Movies.Where(m => m.Genre.Name == genrename);
+			return View("Index");
+		}
+	}
 }

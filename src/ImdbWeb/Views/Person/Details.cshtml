@@ -1,0 +1,38 @@
+﻿@model ImdbDAL.Person
+<h2>@Model.Name</h2>
+
+<h3>Acted in</h3>
+<ul>
+	@foreach (var movie in Model.ActedMovies)
+	{
+		<li>
+			<a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId">
+				@movie.Title
+			</a>
+		</li>
+	}
+</ul>
+
+<h3>Produced</h3>
+<ul>
+	@foreach (var movie in Model.ProducedMovies)
+	{
+		<li>
+			<a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId">
+				@movie.Title
+			</a>
+		</li>
+	}
+</ul>
+
+<h3>Directed</h3>
+<ul>
+	@foreach (var movie in Model.DirectedMovies)
+	{
+		<li>
+			<a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId">
+				@movie.Title
+			</a>
+		</li>
+	}
+</ul>

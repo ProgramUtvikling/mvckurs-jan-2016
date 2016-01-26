@@ -9,7 +9,7 @@ namespace ImdbDAL
 	public class ImdbContext : DbContext
 	{
 		public ImdbContext()
-			: base(@"Data Source=(localdb)\ProjectsV12;Initial Catalog=Imdb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+			: base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Imdb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
 		{
 		}
 

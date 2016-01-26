@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using ImdbDAL;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,25 +11,39 @@ namespace ImdbWeb.Controllers
 {
     public class PersonController : Controller
     {
-        public string Actors()
+        public IActionResult Actors()
         {
-            return "PersonController.Actors()";
-        }
+			var db = new ImdbContext();
+			ViewData.Model = from person in db.Persons
+							 where person.ActedMovies.Any()
+							 select person;
+			return View("Index");
+		}
 
-        public string Producers()
+		public IActionResult Producers()
         {
-            return "PersonController.Producers()";
-        }
+			var db = new ImdbContext();
+			ViewData.Model = from person in db.Persons
+							 where person.ProducedMovies.Any()
+							 select person;
+			return View("Index");
+		}
 
-        public string Directors()
+		public IActionResult Directors()
         {
-            return "PersonController.Directors()";
-        }
+			var db = new ImdbContext();
+			ViewData.Model = from person in db.Persons
+							 where person.DirectedMovies.Any()
+							 select person;
+			return View("Index");
+		}
 
 		[Route("Person/{id:int}")]
-        public string Details(int id)
+        public IActionResult Details(int id)
         {
-            return $"PersonController.Details({id})";
+			var db = new ImdbContext();
+			ViewData.Model = db.Persons.Find(id);
+			return View();
         }
     }
 }
