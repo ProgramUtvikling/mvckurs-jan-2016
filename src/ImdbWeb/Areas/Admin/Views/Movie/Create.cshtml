@@ -1,0 +1,36 @@
+﻿@model CreateModel
+
+<h2>Register new movie</h2>
+<form asp-action="Create">
+	<label asp-for="MovieId"></label>
+	<input asp-for="MovieId" />
+	<span asp-validation-for="MovieId"></span>
+	<br />
+	<label asp-for="Title"></label>
+	<input asp-for="Title" />
+	<span asp-validation-for="Title"></span>
+	<br />
+	<label asp-for="OriginalTitle"></label>
+	<input asp-for="OriginalTitle" />
+	<span asp-validation-for="OriginalTitle"></span>
+	<br />
+	<label asp-for="Description"></label>
+	<input asp-for="Description" />
+	<span asp-validation-for="Description"></span>
+	<br />
+	<label asp-for="RunningLengthHours"></label>
+	<input asp-for="RunningLengthHours" />
+	<span asp-validation-for="RunningLengthHours"></span>
+	<br />
+	<label asp-for="RunningLengthMinutes"></label>
+	<input asp-for="RunningLengthMinutes" />
+	<span asp-validation-for="RunningLengthMinutes"></span>
+	<br />
+	<label asp-for="GenreId"></label>
+	<select asp-for="GenreId" asp-items="ViewBag.Genres">
+		<option>-- Select Genre --</option>
+	</select>
+	<span asp-validation-for="GenreId"></span>
+	<br />
+	<button>Register</button>
+</form>
