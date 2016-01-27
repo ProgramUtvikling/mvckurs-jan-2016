@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace ImdbWeb.Controllers
 		[FromServices]
 		public ImdbContext Db { get; set; }
 
-		public IActionResult Actors()
+		public async Task<IActionResult> Actors()
 		{
 			var persons = from person in Db.Persons
 						  where person.ActedMovies.Any()
@@ -24,14 +25,14 @@ namespace ImdbWeb.Controllers
 			ViewData.Model = new IndexViewModel
 			{
 				Title = "Actors",
-				Persons = persons
+				Persons = await persons.ToListAsync()
 			};
 			return View("Index");
 		}
 
-		public IActionResult Producers()
+		public async Task<IActionResult> Producers()
 		{
-			var persons = Db.Persons.Where(person => person.ProducedMovies.Any());
+			var persons = await Db.Persons.Where(person => person.ProducedMovies.Any()).ToListAsync();
 
 			ViewData.Model = new IndexViewModel
 			{
@@ -41,11 +42,11 @@ namespace ImdbWeb.Controllers
 			return View("Index");
 		}
 
-		public IActionResult Directors()
+		public async Task<IActionResult> Directors()
 		{
-			var persons = from person in Db.Persons
-						  where person.DirectedMovies.Any()
-						  select person;
+			var persons = await (from person in Db.Persons
+								 where person.DirectedMovies.Any()
+								 select person).ToListAsync();
 
 			ViewData.Model = new IndexViewModel
 			{
@@ -56,9 +57,9 @@ namespace ImdbWeb.Controllers
 		}
 
 		[Route("Person/{id:int}")]
-		public IActionResult Details(int id)
+		public async Task<IActionResult> Details(int id)
 		{
-			ViewData.Model = Db.Persons.Find(id);
+			ViewData.Model = await Db.Persons.FindAsync(id);
 			return View();
 		}
 	}

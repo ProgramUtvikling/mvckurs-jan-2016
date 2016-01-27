@@ -1,5 +1,4 @@
-﻿@using ImdbWeb.HtmlHelpers
-@{ 
+﻿@{ 
 	ViewBag.Title = $"Details for {Model.Title}";
 }
 @model Movie
@@ -19,5 +18,5 @@
 
 
 <h3>Actors</h3>
-@Html.Partial("_PersonList", Model.Actors)
+@await Html.PartialAsync("_PersonList", Model.Actors)
 

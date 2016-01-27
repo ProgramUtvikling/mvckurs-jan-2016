@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Entity;
+using Microsoft.Extensions.OptionsModel;
 
 namespace ImdbDAL
 {
 	public class ImdbContext : DbContext
 	{
-		public ImdbContext(ImdbOptions options)
-			: base(options.ConnectionString)
+		public ImdbContext(IOptions<ImdbOptions> optionsAccessor)
+			: base(optionsAccessor.Value.ConnectionString)
 		{
 		}
+
+		//public ImdbContext(ImdbOptions options)
+		//	: base(options.ConnectionString)
+		//{
+		//}
 
 		public DbSet<Movie> Movies { get; set; }
 		public DbSet<Genre> Genres { get; set; }

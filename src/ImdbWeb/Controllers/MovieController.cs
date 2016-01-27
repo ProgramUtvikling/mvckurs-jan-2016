@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,35 +18,31 @@ namespace ImdbWeb.Controllers
 		[FromServices]
 		public ImdbContext Db { get; set; }
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
         {
-			ViewData.Model = Db.Movies;
+			ViewData.Model = await Db.Movies.ToListAsync();
             return View();
         }
 
-        public IActionResult Details(string id)
+        public async Task<IActionResult> Details(string id)
         {
-			var movie = Db.Movies.Find(id);
-			if(movie == null)
-			{
-				return HttpNotFound();
-			}
-
+			var movie = await Db.Movies.FindAsync(id);
+			if(movie == null) return HttpNotFound();
 
 			ViewData.Model = movie;
 			return View();
 		}
 
-		public IActionResult Genres()
+		public async Task<IActionResult> Genres()
         {
-			ViewData.Model = Db.Genres;
+			ViewData.Model = await Db.Genres.ToListAsync();
 			return View();
 		}
 
 		[Route("Movie/Genre/{genrename}")]
-        public IActionResult MoviesByGenre(string genrename)
+        public async Task<IActionResult> MoviesByGenre(string genrename)
         {
-			ViewData.Model = Db.Movies.Where(m => m.Genre.Name == genrename);
+			ViewData.Model = await Db.Movies.Where(m => m.Genre.Name == genrename).ToListAsync();
 			ViewBag.Genrename = genrename;
 			return View("Index");
 		}

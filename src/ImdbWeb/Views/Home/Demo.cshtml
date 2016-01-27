@@ -1,0 +1,32 @@
+﻿@model ImdbWeb.Controllers.MyPerson
+
+<form method="post" asp-antiforgery="true">
+
+	@Html.LabelFor(m => m.Firstname)
+	@Html.TextBoxFor(m => m.Firstname)
+	@Html.ValidationMessageFor(m => m.Firstname)
+	<br />
+	<label asp-for="Lastname"></label>
+	<input asp-for="Lastname"/>
+	<span asp-validation-for="Lastname"></span>
+	<br />
+	<label asp-for="Age"></label>
+	<input asp-for="Age" />
+	<span asp-validation-for="Age"></span>
+	<br />
+	<label asp-for="Password"></label>
+	<input asp-for="Password" />
+	<span asp-validation-for="Password"></span>
+	<br />
+	<label asp-for="IsRegistered"></label>
+	<input asp-for="IsRegistered" />
+	<span asp-validation-for="IsRegistered"></span>
+	<br />
+	<label asp-for="Bio"></label>
+	<textarea asp-for="Bio" rows="5" cols="40" ></textarea>
+	<span asp-validation-for="Bio"></span>
+	<br />
+	<button>Submit</button>
+	<br />
+	<div asp-validation-summary="ValidationSummary.ModelOnly"></div>
+</form>

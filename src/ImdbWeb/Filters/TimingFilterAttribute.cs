@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Mvc.Filters;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,15 +11,26 @@ namespace ImdbWeb.Filters
     public class TimingFilterAttribute : ActionFilterAttribute
     {
 		private Stopwatch _stopwatch;
-		public override void OnActionExecuting(ActionExecutingContext context)
+
+
+		public override async Task OnActionExecutionAsync(ActionExecutingContext startContext, ActionExecutionDelegate next)
 		{
 			_stopwatch = Stopwatch.StartNew();
-		}
 
-		public override void OnActionExecuted(ActionExecutedContext context)
-		{
+			var endContext = await next();
+
 			Debug.WriteLine($"Action ended in {_stopwatch.Elapsed}");
 		}
+
+		//public override void OnActionExecuting(ActionExecutingContext context)
+		//{
+		//	_stopwatch = Stopwatch.StartNew();
+		//}
+
+		//public override void OnActionExecuted(ActionExecutedContext context)
+		//{
+		//	Debug.WriteLine($"Action ended in {_stopwatch.Elapsed}");
+		//}
 
 		public override void OnResultExecuting(ResultExecutingContext context)
 		{
