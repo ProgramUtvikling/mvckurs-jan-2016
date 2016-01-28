@@ -1,0 +1,7 @@
+﻿@model DeleteModel
+
+<h2>Are you sure you want to delete @Model.Title (@Model.ProductionYear)</h2>
+<form asp-action="Delete">
+	<button>Yes, delete it!</button>
+	<a asp-action="Index">No!</a>
+</form>

@@ -10,14 +10,14 @@ namespace ImdbDAL
 	public class ImdbContext : DbContext
 	{
 		public ImdbContext(IOptions<ImdbOptions> optionsAccessor)
-			: base(optionsAccessor.Value.ConnectionString)
+			: this(optionsAccessor.Value.ConnectionString)
 		{
 		}
 
-		//public ImdbContext(ImdbOptions options)
-		//	: base(options.ConnectionString)
-		//{
-		//}
+		public ImdbContext(string connectionString)
+			: base(connectionString)
+		{
+		}
 
 		public DbSet<Movie> Movies { get; set; }
 		public DbSet<Genre> Genres { get; set; }

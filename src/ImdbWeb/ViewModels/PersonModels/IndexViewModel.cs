@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ImdbWeb.ViewModels.PersonViewModels
+namespace ImdbWeb.ViewModels.PersonModels
 {
     public class IndexViewModel
     {

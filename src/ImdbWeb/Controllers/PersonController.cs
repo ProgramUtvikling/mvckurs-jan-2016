@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using ImdbDAL;
-using ImdbWeb.ViewModels.PersonViewModels;
+using ImdbWeb.ViewModels.PersonModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImdbWeb.Areas.Admin.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace ImdbWeb.Areas.Admin.ViewModels.MovieModels
 		[Display(Name ="ID/EAN")]
 		[Required]
 		[MaxLength(30)]
-		public string MovieId { get; set; }
+		[CustomValidation(typeof(MovieController), "CheckIdLocal")]
+		public string Id { get; set; }
 
 		[Display(Name = "Title")]
 		[Required]
