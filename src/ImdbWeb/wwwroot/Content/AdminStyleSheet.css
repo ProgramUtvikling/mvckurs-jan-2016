@@ -1,4 +1,6 @@
-﻿body {
+﻿@import url('validationstyles.css');
+
+body {
 	font-family: sans-serif;
 	background: linear-gradient(lightgray 0, transparent 100%) no-repeat;
 	background-size: 100% 70px;
@@ -9,3 +11,4 @@ label{
 	width: 100px;
 	display: inline-block;
 }
+

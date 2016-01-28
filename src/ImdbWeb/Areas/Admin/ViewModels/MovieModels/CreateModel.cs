@@ -25,6 +25,7 @@ namespace ImdbWeb.Areas.Admin.ViewModels.MovieModels
 		public string OriginalTitle { get; set; }
 
 		[Display(Name = "Description")]
+		[DataType(DataType.MultilineText)]
 		public string Description { get; set; }
 
 		[Display(Name = "Production Year")]

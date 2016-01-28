@@ -67,7 +67,8 @@ namespace ImdbWeb.Areas.Admin.Controllers
 		{
 			var db = new ImdbContext(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Imdb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 			//var db = (ImdbContext)ctx.ServiceContainer.GetService(typeof(ImdbContext));
-			if(db.Movies.Any(m => m.MovieId == id)){
+			if (db.Movies.Any(m => m.MovieId == id))
+			{
 				return new ValidationResult("This movie is allready registered");
 			}
 			return ValidationResult.Success;
@@ -91,7 +92,8 @@ namespace ImdbWeb.Areas.Admin.Controllers
 		[HttpDelete]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Delete(string id, string søppel)
+		[ActionName("Delete")]
+		public async Task<IActionResult> DeleteConfirmed(string id)
 		{
 			var movie = await Db.Movies.FindAsync(id);
 			if (movie == null) return HttpNotFound();
