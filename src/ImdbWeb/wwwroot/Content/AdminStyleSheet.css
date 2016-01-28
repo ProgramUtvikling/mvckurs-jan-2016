@@ -12,3 +12,7 @@ label{
 	display: inline-block;
 }
 
+:focus{
+	background-color: yellow;
+}
+

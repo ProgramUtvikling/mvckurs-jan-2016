@@ -1,6 +1,35 @@
 ﻿body {
+	/*background-color: lightgray;*/
 	font-family: sans-serif;
-	background: linear-gradient(lightgray 0, transparent 100%) no-repeat;
+	background: linear-gradient(gray, transparent 100%) no-repeat, lightgray;
 	background-size: 100% 70px;
 	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Covered By Your Grace', cursive;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+li {
+	border: 1px solid gray;
+	padding: .2em;
+}
+
+	li + li {
+		border-top: none;
+	}
+
+body > div {
+	width: 900px;
+	border-top: 2px dashed gray;
+	border-bottom: 2px dashed gray;
+	background-color: white;
+	margin: 50px auto;
+	padding: 5px;
 }
