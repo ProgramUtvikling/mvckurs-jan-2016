@@ -19,7 +19,7 @@ namespace ImdbWeb.Controllers
 		public IActionResult Movies()
 		{
 			var res = from movie in Db.Movies
-					  select new MovieIndexModel{ Id = movie.MovieId, Title = movie.MovieId };
+					  select new MovieIndexModel{ Id = movie.MovieId, Title = movie.Title };
 
 			return Ok(res);
 		}

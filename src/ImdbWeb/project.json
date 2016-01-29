@@ -14,7 +14,8 @@
     "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final",
     "EntityFramework": "6.1.3",
     "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-final",
-    "AntiXSS": "4.3.0"
+    "AntiXSS": "4.3.0",
+    "jQuery": "2.2.0"
   },
 
   "commands": {

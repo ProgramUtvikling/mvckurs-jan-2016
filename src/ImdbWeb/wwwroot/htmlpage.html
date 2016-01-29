@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	<button id="loadButton">Click to load movies</button>
+
+	<table>
+		<thead>
+			<tr>
+				<td>Id</td>
+				<td>Title</td>
+			</tr>
+		</thead>
+		<thead data-bind="foreach: movies">
+			<tr>
+				<td data-bind="text: id"></td>
+				<td data-bind="text: title"></td>
+			</tr>
+		</thead>
+	</table>
+
+
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/knockout/dist/knockout.js"></script>
+	<script>
+
+		$("#loadButton").click(function () {
+
+			$.get("/imdbapi/movies")
+				.then(function (data) {
+					ko.applyBindings({ movies: data });
+				});
+		});
+
+	</script>
+</body>
+</html>

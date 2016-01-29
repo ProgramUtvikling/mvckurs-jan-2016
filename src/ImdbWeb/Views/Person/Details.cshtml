@@ -4,3 +4,13 @@
 @Component.Invoke("MovieList", Model.ActedMovies, "Acted in")
 @Component.Invoke("MovieList", Model.ProducedMovies, "Produced")
 @Component.Invoke("MovieList", Model.DirectedMovies, "Directed")
+
+
+
+@section scripts{
+	<script>
+		$("h3").on("click", function () {
+			$(this).next().fadeOut(500);
+		});
+	</script>
+}
